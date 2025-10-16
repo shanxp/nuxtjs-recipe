@@ -28,7 +28,7 @@ useSeoMeta({
           <p class="text-xl lg:text-2xl mb-8 text-balance">
             Discover recipes helping you to find the easiest way to cook.
           </p>
-          <Button to="#recipes" label="Browse Recipes" />
+          <BaseBtn to="#recipes"> Browse Recipes </BaseBtn>
         </div>
         <div class="flex-1 order-1 lg:order-2">
           <NuxtImg

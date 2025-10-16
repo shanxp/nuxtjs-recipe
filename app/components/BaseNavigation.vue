@@ -12,6 +12,9 @@
         <li>
           <NuxtLink to="/about">About Us</NuxtLink>
         </li>
+        <li>
+          <NuxtLink to="/posts">Posts</NuxtLink>
+        </li>
       </ul>
     </nav>
   </header>
