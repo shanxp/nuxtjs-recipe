@@ -3,7 +3,7 @@ import { prisma } from "~/lib/prisma";
 export default defineEventHandler( async (event)=> {
     const validatedResult = await readBody(event);
 
-    return validatedResult;
+    // return validatedResult;
     const result = await prisma.user.create({
         data: {
             name: 'Test Author',
