@@ -7,7 +7,11 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxt/icon',
     '@nuxt/image',
+    'nuxt-tiptap-editor',
   ],
+  tiptap: {
+    prefix: 'Tiptap', //prefix for Tiptap imports, composables not included
+  },
   googleFonts: {
     families: {
       Montserrat: true,      

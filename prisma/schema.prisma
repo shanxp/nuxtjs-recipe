@@ -31,7 +31,8 @@ model User {
 model Post {
   id          Int      @id @default(autoincrement()) @db.UnsignedInt
   title       String   @db.VarChar(255)
-  content String   @db.Text
+  content String?   @db.Text
+  ckcontent String?   @db.Text
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int @db.UnsignedInt
   status      Status   @default(CREATED)

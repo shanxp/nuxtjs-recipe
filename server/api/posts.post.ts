@@ -3,7 +3,7 @@ import { prisma } from "~/lib/prisma";
 export default defineEventHandler( async (event)=> {
     const validatedResult = await readBody(event);
 
-    // return validatedResult;
+    return validatedResult;
     const result = await prisma.user.create({
         data: {
             name: 'Test Author',
@@ -12,6 +12,7 @@ export default defineEventHandler( async (event)=> {
                     { 
                         title: validatedResult.title,
                         content: validatedResult.content,
+                        ckcontent: validatedResult.ckcontent,
                     },
                 ],
             },
@@ -19,13 +20,7 @@ export default defineEventHandler( async (event)=> {
         include: {
             posts: true, // Include all posts in the returned object
         },
-    })
+    });
 
-    // const newUser = await prisma.post.create({
-    //         data: {
-    //             title: validatedResult.title,
-    //             content: validatedResult.content,
-    //         }
-    //     });
     return { result };
 });

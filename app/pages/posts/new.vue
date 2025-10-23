@@ -10,6 +10,7 @@ const schema = z.object({
 const form = ref({
   title: "",
   content: "",
+  ckcontent: "",
 });
 
 const result = ref("");
@@ -42,6 +43,7 @@ const submitForm = async () => {
     // Reset form after submission
     form.value.title = "";
     form.value.content = "";
+    form.value.ckcontent = "";
 
     // Clear result and status after 5 seconds
     setTimeout(() => {
@@ -55,7 +57,7 @@ const submitForm = async () => {
 
 <template>
   <section class="container py-20">   
-    <form @submit.prevent="submitForm" class="bg-white p-8 rounded-lg shadow-md w-full max-w-md space-y-6">
+    <form @submit.prevent="submitForm" class="bg-white p-8 rounded-lg shadow-md w-[700px] space-y-6">
     <h2 class="text-2xl font-bold text-gray-800">New post</h2>
 
     <!-- Title Field -->
@@ -66,10 +68,17 @@ const submitForm = async () => {
     </div>
 
     <!-- Message Field -->
-    <div>
-      <label for="content" class="block text-sm font-medium text-gray-700 mb-1">Content</label>
-      <textarea v-model="form.content" id="content" name="content" rows="4" required
-                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+    <div class="editor-area">
+      <label for="content" class="block text-sm font-medium text-gray-700 mb-1">TipTap Editor</label>
+      <TiptapEditor v-model="form.content" />
+    </div>
+    <!-- Message Field -->
+    <div class="editor-area">
+      <label for="ckcontent" class="block text-sm font-medium text-gray-700 mb-1">CKEditor</label>
+      <ClientOnly>
+        <CkEditor v-model="form.ckcontent" />
+        <div v-html="form.ckcontent" class="preview" />
+      </ClientOnly>
     </div>
 
     <!-- Submit Button -->
@@ -80,3 +89,11 @@ const submitForm = async () => {
   </form>
   </section>
 </template>
+
+<style scoped>
+.preview {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+</style>
